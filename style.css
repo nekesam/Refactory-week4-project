@@ -3,6 +3,10 @@ body {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+    background-image: url("Assets/toDo-image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -17,7 +21,8 @@ body {
 h1 {
     text-align: center;
     font-size: 2rem;
-    color: #333;
+    font-family: "poppins";
+    color: #6D28D9;
     margin-bottom: 20px;
 }
 
