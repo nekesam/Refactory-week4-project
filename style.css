@@ -18,11 +18,31 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+.app-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.app-logo i {
+    font-size: 40px;
+    color: #6c63ff;
+    background: #f4f4ff;
+    padding: 18px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 h1 {
     text-align: center;
     font-size: 2rem;
     font-family: "poppins";
     color: #6D28D9;
+    margin-bottom: 10px;
+}
+
+p{
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -43,6 +63,7 @@ button:hover {
 button.add-btn {
     background-color: #007bff;
     color: #fff;
+    margin-bottom: 20px;
 }
 
 
@@ -213,3 +234,18 @@ form button:hover {
         width: 100%;
     }
 }
+
+#logoutBtn {
+    position: static;      /* remove fixed positioning */
+    display: block;
+    margin: 12px 0 0 auto; /* place below list, aligned right */
+    width: auto;
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#logoutBtn:hover {
+    background-color: #b02a37;
+}
+
+

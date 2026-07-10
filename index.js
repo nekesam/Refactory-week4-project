@@ -1,3 +1,4 @@
+// Dom Element References
 const addTaskButton = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const modal = document.getElementById("taskModal");
@@ -8,7 +9,9 @@ const taskTitleInput = document.getElementById("taskTitle");
 const taskDescription = document.getElementById("taskDesc");
 const dueDate = document.getElementById("taskDue");
 const saveButton = document.getElementById("saveTask");
+const logoutBtn = document.getElementById("logoutBtn");
 
+// load tasks saved from LocalStorage.
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 tasks.forEach(function(task){
     createTask(task);
@@ -25,6 +28,16 @@ closeButton.addEventListener("click", function(){
     modal.style.display = "none";
 })
 
+
+// logout button
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", function () {
+        localStorage.removeItem("todoCurrentUser");
+        window.location.href = "auth.html";
+    });
+}
+
+// create list item from a task
 function createTask(task){
     const li = 
      document.createElement("li");
@@ -46,8 +59,15 @@ function createTask(task){
      // delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-    deleteBtn.style.backgroundColor = '#fa776e'; // red for delete
+    deleteBtn.style.backgroundColor = '#fa776e'; 
     deleteBtn.addEventListener("click", function(){
+        const currentIndex = Array.from(taskList.children).indexOf(li);
+
+    // Remove from tasks array
+    if (currentIndex > -1) {
+        tasks.splice(currentIndex, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
        li.remove();
   })
       
@@ -67,13 +87,15 @@ function createTask(task){
         taskBeingEdited = li;
     })
 
+    // add action buttons to each task item
     li.appendChild(deleteBtn);
     li.appendChild(editBtn);
     li.appendChild(completeBtn);
-    taskList.appendChild(li);
+    taskList.appendChild(li);//Append task item to task item
 
 }
 
+// form submission
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
@@ -86,6 +108,8 @@ form.addEventListener("submit", function(event){
     tasks.push(task);
     let taskString = JSON.stringify(tasks);
     localStorage.setItem("tasks", taskString);
+
+    
 
      
 
